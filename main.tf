@@ -9,3 +9,17 @@ resource "tfe_workspace" "main" {
   }
 }
 
+resource "tfe_variable" "gcp_credentials" {
+  key          = "GOOGLE_CREDENTIALS"
+  value        = var.GOOGLE_CREDENTIALS
+  category     = "env"
+  workspace_id = tfe_workspace.main.id
+  sensitive    = true
+}
+
+resource "tfe_variable" "gcp_project" {
+  key          = "GOOGLE_PROJECT"
+  value        = var.GOOGLE_PROJECT
+  category     = "env"
+  workspace_id = tfe_workspace.main.id
+}
