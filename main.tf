@@ -4,6 +4,7 @@ resource "tfe_workspace" "main" {
   count        = var.lab_instances
   name         = "test-student-${count.index + 1}"
   organization = "prisma-cloud-compute"
+  auto_apply   = true
   vcs_repo {
     identifier     = var.repo
     oauth_token_id = var.oauth_token_id
