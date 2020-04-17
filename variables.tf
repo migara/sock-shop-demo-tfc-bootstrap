@@ -13,3 +13,8 @@ variable "GOOGLE_PROJECT" {
 variable "GOOGLE_CREDENTIALS" {
   default = ""
 }
+
+variable "lab_instances" {
+  default = "2"
+}
+

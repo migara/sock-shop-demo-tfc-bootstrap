@@ -1,7 +1,8 @@
 provider "tfe" {}
 
 resource "tfe_workspace" "main" {
-  name         = "test-student-1"
+  count        = var.lab_instances
+  name         = "test-student-${count.index}"
   organization = "prisma-cloud-compute"
   vcs_repo {
     identifier     = var.repo
@@ -10,23 +11,26 @@ resource "tfe_workspace" "main" {
 }
 
 resource "tfe_variable" "gcp_credentials" {
+  count        = length(tfe_workspace.main[*].id)
   key          = "GOOGLE_CREDENTIALS"
   value        = var.GOOGLE_CREDENTIALS
   category     = "env"
-  workspace_id = tfe_workspace.main.id
+  workspace_id = tfe_workspace.main[count.index].id
   sensitive    = true
 }
 
 resource "tfe_variable" "gcp_project" {
+  count        = length(tfe_workspace.main[*].id)
   key          = "GOOGLE_PROJECT"
   value        = var.GOOGLE_PROJECT
   category     = "env"
-  workspace_id = tfe_workspace.main.id
+  workspace_id = tfe_workspace.main[count.index].id
 }
 
 resource "tfe_variable" "instance_id" {
+  count        = length(tfe_workspace.main[*].id)
   key          = "instance_id"
   value        = "2"
   category     = "terraform"
-  workspace_id = tfe_workspace.main.id
+  workspace_id = tfe_workspace.main[count.index].id
 }
