@@ -23,3 +23,10 @@ resource "tfe_variable" "gcp_project" {
   category     = "env"
   workspace_id = tfe_workspace.main.id
 }
+
+resource "tfe_variable" "instance_id" {
+  key          = "instance_id"
+  value        = "2"
+  category     = "terraform"
+  workspace_id = tfe_workspace.main.id
+}
