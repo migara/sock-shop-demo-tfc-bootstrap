@@ -2,7 +2,7 @@ provider "tfe" {}
 
 resource "tfe_workspace" "main" {
   count        = var.lab_instances
-  name         = "test-student-${count.index}"
+  name         = "test-student-${count.index + 1}"
   organization = "prisma-cloud-compute"
   vcs_repo {
     identifier     = var.repo
@@ -30,7 +30,7 @@ resource "tfe_variable" "gcp_project" {
 resource "tfe_variable" "instance_id" {
   count        = length(tfe_workspace.main[*].id)
   key          = "instance_id"
-  value        = "2"
+  value        = count.index + 1
   category     = "terraform"
   workspace_id = tfe_workspace.main[count.index].id
 }
