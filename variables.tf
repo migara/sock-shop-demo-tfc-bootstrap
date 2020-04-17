@@ -1,3 +1,7 @@
+variable "oauth_token_id" {
+  default = ""
+}
+
 variable "repo" {
-  default = "https://github.com/migara/sock-shop-demo"
+  default = "migara/sock-shop-demo"
 }
