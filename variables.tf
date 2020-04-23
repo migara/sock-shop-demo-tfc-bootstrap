@@ -1,25 +1,21 @@
-variable "oauth_token_id" {
-  default = ""
-}
+variable "oauth_token_id" {}
 
 variable "repo" {
   default = "migara/sock-shop-demo"
 }
 
-variable "GOOGLE_PROJECT" {
-  default = ""
-}
+variable "GOOGLE_PROJECT" {}
 
-variable "GOOGLE_CREDENTIALS" {
-  default = ""
-}
+variable "GOOGLE_CREDENTIALS" {}
 
 variable "lab_instances" {
   default = "2"
 }
 
 variable "initial_node_count" {
-  default = 3
+  default = 2
 }
+
+variable "prefix" {}
 
 
