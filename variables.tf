@@ -20,5 +20,5 @@ variable "prefix" {}
 
 variable "region" {}
 
-
+variable "location" {}
 
