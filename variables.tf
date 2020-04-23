@@ -18,4 +18,7 @@ variable "initial_node_count" {
 
 variable "prefix" {}
 
+variable "region" {}
+
+
 

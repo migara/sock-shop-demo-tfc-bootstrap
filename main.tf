@@ -43,3 +43,19 @@ resource "tfe_variable" "initial_node_count" {
   category     = "terraform"
   workspace_id = tfe_workspace.main[count.index].id
 }
+
+resource "tfe_variable" "region" {
+  count        = length(tfe_workspace.main[*].id)
+  key          = "region"
+  value        = var.region
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[count.index].id
+}
+
+resource "tfe_variable" "location" {
+  count        = length(tfe_workspace.main[*].id)
+  key          = "location"
+  value        = var.location
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[count.index].id
+}
