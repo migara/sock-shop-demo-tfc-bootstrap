@@ -28,15 +28,15 @@ resource "tfe_variable" "gcp_project" {
   workspace_id = tfe_workspace.main[count.index].id
 }
 
-resource "tfe_variable" "instance_id" {
+resource "tfe_variable" "cluster_name" {
   count        = length(tfe_workspace.main[*].id)
-  key          = "instance_id"
-  value        = count.index + 1
+  key          = "cluster_name"
+  value        = "${var.prefix}-${count.index + 1}"
   category     = "terraform"
   workspace_id = tfe_workspace.main[count.index].id
 }
 
-resource "tfe_variable" "instance_id" {
+resource "tfe_variable" "initial_node_count" {
   count        = length(tfe_workspace.main[*].id)
   key          = "initial_node_count"
   value        = var.initial_node_count
