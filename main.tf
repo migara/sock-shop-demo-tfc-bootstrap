@@ -35,3 +35,11 @@ resource "tfe_variable" "instance_id" {
   category     = "terraform"
   workspace_id = tfe_workspace.main[count.index].id
 }
+
+resource "tfe_variable" "instance_id" {
+  count        = length(tfe_workspace.main[*].id)
+  key          = "initial_node_count"
+  value        = var.initial_node_count
+  category     = "terraform"
+  workspace_id = tfe_workspace.main[count.index].id
+}

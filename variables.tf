@@ -18,3 +18,8 @@ variable "lab_instances" {
   default = "2"
 }
 
+variable "initial_node_count" {
+  default = 3
+}
+
+
