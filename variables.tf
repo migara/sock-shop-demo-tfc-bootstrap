@@ -21,4 +21,3 @@ variable "prefix" {}
 variable "region" {}
 
 variable "location" {}
-variable "TFC_WORKSPACE_NAME" {}
