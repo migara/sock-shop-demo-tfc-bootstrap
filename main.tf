@@ -8,7 +8,7 @@ data "tfe_workspace" "bootstrap" {
 resource "tfe_run_trigger" "test" {
   count                 = var.lab_instances
   workspace_external_id = tfe_workspace.main[count.index].external_id
-  sourceable_id         = tfe_workspace.bootstrap.external_id
+  sourceable_id         = data.tfe_workspace.bootstrap.external_id
 }
 
 resource "tfe_workspace" "main" {
