@@ -5,18 +5,17 @@ data "tfe_workspace" "bootstrap" {
   organization = "prisma-cloud-compute"
 }
 
-resource "tfe_run_trigger" "test" {
-  count                 = var.lab_instances
-  workspace_external_id = tfe_workspace.main[count.index].external_id
-  sourceable_id         = data.tfe_workspace.bootstrap.external_id
-}
+# resource "tfe_run_trigger" "test" {
+#   count                 = var.lab_instances
+#   workspace_external_id = tfe_workspace.main[count.index].external_id
+#   sourceable_id         = data.tfe_workspace.bootstrap.external_id
+# }
 
 resource "tfe_workspace" "main" {
-  count          = var.lab_instances
-  name           = "test-student-${count.index + 1}"
-  organization   = "prisma-cloud-compute"
-  auto_apply     = true
-  queue_all_runs = false
+  count        = var.lab_instances
+  name         = "test-student-${count.index + 1}"
+  organization = "prisma-cloud-compute"
+  auto_apply   = true
   vcs_repo {
     identifier     = var.repo
     oauth_token_id = var.oauth_token_id
